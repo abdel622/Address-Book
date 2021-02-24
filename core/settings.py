@@ -25,6 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
 
+DATABASE_URL = config('DATABASE_URL')
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -84,7 +87,7 @@ DATABASES = {
     }
 }
 
-DATABASES['default'] = dj_database_url.config(default='postgres://syrzmszugvzyzt:e8bc6e01747fd621073104a7f6f9e510985c2c79cd9a8479cf1ec3cf2f09190f@ec2-54-164-238-108.compute-1.amazonaws.com:5432/da8k7refnaoel')
+DATABASES['default'] = dj_database_url.config(default=DATABASE_URL)
 
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
